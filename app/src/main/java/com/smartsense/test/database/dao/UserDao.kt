@@ -17,6 +17,7 @@ interface UserDao {
     @Delete
     suspend fun delete(recipeDB:  UserDB)
 
-
+    @Update(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun update(recipes: List<UserDB>)
 
 }

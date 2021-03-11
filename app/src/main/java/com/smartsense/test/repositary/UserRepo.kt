@@ -8,11 +8,16 @@ import com.smartsense.test.services.NetworkApiWithPaging
 class UserRepo(private val recipesService: NetworkApiWithPaging, private val dao: UserDao) {
 
 
-    suspend fun saveRecipePersistence(recipe:List<UserDB>) {
+    suspend fun saveUserPersistence(recipe:List<UserDB>) {
         dao.insertList(recipe)
-    }
 
-    suspend fun getAllRecipesPersistence(): List<UserDB> {
+
+    }
+    suspend fun updateUserPersistence(recipe:List<UserDB>) {
+        dao.update(recipe)
+
+    }
+    suspend fun getAllUserPersistence(): List<UserDB> {
         return dao.findAllUsers()
     }
 

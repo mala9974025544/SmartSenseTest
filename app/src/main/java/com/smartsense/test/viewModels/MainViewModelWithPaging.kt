@@ -22,7 +22,7 @@ init {
 }
     fun loadRecipesPersistence() {
         ioScope.launch {
-            val listRetrieved = repo.getAllRecipesPersistence()
+            val listRetrieved = repo.getAllUserPersistence()
             mainScope.launch {
                 offline.value = listRetrieved
             }

@@ -33,9 +33,9 @@ class UserDataSource(private val repository: UserRepo,
                 if (response.isSuccessful) {
                     val apiResponse = response.body()!!
                     apiResponse.let {
-                        Log.d("Log", "loadInitial_result")
-                        Log.d("Log", apiResponse.users!![0].first_name.toString())
-                       // deleteRecipePersistence()
+
+
+
                         saveRecipePersistence( mapList(apiResponse.users!!))
 
                         callback.onResult( mapList(apiResponse.users!!),null, FIRST_PAGE + 1)
@@ -60,7 +60,7 @@ class UserDataSource(private val repository: UserRepo,
 
                     val key = if (params.key > 1) params.key - 1 else 0
                     apiResponse.let {
-                        Log.d("Log", "loadBefore" + apiResponse.users!![0].first_name)
+
                         callback.onResult(mapList( apiResponse.users!!), key)
 
                     }
@@ -82,7 +82,7 @@ class UserDataSource(private val repository: UserRepo,
 
                     val key = params.key + 1
                     apiResponse.let {
-                        Log.d("Log", "loadAfter" + apiResponse.users!!.size)
+                       // updateUserPersistence( mapList(apiResponse.users!!))
                         callback.onResult(mapList(apiResponse.users!!), key)
                     }
                 }
@@ -102,10 +102,14 @@ class UserDataSource(private val repository: UserRepo,
 
     fun saveRecipePersistence(recipe: List<UserDB>) {
         scope.launch {
-            recipe?.let { repository.saveRecipePersistence(it) }
+            recipe?.let { repository.saveUserPersistence(it) }
         }
     }
 
-
+    fun updateUserPersistence(recipe: List<UserDB>) {
+        scope.launch {
+            recipe?.let { repository.updateUserPersistence(it) }
+        }
+    }
 
 }
