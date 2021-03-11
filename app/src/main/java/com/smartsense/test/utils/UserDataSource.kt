@@ -91,7 +91,6 @@ class UserDataSource( private val repository: UserRepo,
                     val key = params.key + 1
                     apiResponse.let {
                         Log.d("Log", "loadAfter" + apiResponse.users!!.size)
-
                         callback.onResult(mapList(apiResponse.users!!), key)
                     }
                 }

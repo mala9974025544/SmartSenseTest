@@ -29,9 +29,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_main)
         setupUi()
 
-
     }
-
+    //set the UI
     fun setupUi() {
         toolbarTitle.text = getString(R.string.app_name)
         icBack.setOnClickListener(this)
@@ -46,7 +45,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         getUserData()
         userViewModel.loadRecipesPersistence()
     }
-
+    //set the user data where online
     private fun getUserData() {
         if (!Utils.isNetworkAvailable(this)) {
             val mainAdapter = MainAdapter(arrayListOf())

@@ -14,6 +14,7 @@ import com.smartsense.test.database.entity.User
 import com.smartsense.test.database.entity.UserDB
 import com.smartsense.test.ui.activities.UserDetailActivity
 import kotlinx.android.synthetic.main.item_layout.view.*
+import spencerstudios.com.bungeelib.Bungee
 
 class MainAdapterWIthPageList(
     val contex: Context
@@ -39,7 +40,7 @@ class MainAdapterWIthPageList(
             view.setOnClickListener(this)
         }
         override fun onClick(v: View?) {
-            rediretMainActivity()
+            getItem(adapterPosition)?.let { rediretMainActivity(it) }
         }
         fun bind(user: UserDB) {
             userName.text = user.first_name
@@ -54,11 +55,18 @@ class MainAdapterWIthPageList(
 
     }
 
-    private fun rediretMainActivity(user:User) {
-        val intent = Intent(context, UserDetailActivity::class.java)
-        intent.putExtra("user", user)
-        context.startActivity(intent)
-        Bungee.slideLeft(context)
+    private fun rediretMainActivity(user: UserDB) {
+        val user= user.first_name?.let { user.avatar?.let { it1 ->
+            user.email?.let { it2 ->
+                User(user.id,
+                    it1, it2, it)
+            }
+        } }
+
+        val intent = Intent(contex, UserDetailActivity::class.java)
+        intent.putExtra("user", user);
+        contex.startActivity(intent)
+        Bungee.slideLeft(contex)
     }
 
 
