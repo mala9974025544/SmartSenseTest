@@ -1,0 +1,114 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+androidExtensions {
+    experimental = true
+}
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+    defaultConfig {
+        multiDexEnabled true
+        applicationId "com.smartsense.test"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            debuggable false
+            shrinkResources true
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            buildConfigField "String", "BASE_URL", "\"https://reqres.in/api/\""
+        }
+    }
+    dexOptions {
+        preDexLibraries true
+        maxProcessCount 8
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    implementation project(":bungeelib")
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    /*kotlin*/
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:${rootProject.ext.kotlin_version}"
+    implementation "androidx.core:core-ktx:${rootProject.ext.ktx}"
+
+
+    /*basic*/
+    implementation "androidx.appcompat:appcompat:${rootProject.ext.appcompat}"
+    implementation "androidx.constraintlayout:constraintlayout:${rootProject.ext.constraintlayout}"
+    implementation 'com.google.android.material:material:1.3.0'
+
+
+    /*Reycleview*/
+    implementation "androidx.recyclerview:recyclerview:1.1.0"
+
+    /*LifeCycle*/
+    implementation "androidx.lifecycle:lifecycle-common:${rootProject.ext.lifecycle}"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:${rootProject.ext.lifecycle}"
+    implementation "android.arch.lifecycle:extensions:${rootProject.ext.lifecycle}"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:${rootProject.ext.lifecycle}"
+
+
+    /*Coroutines*/
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${rootProject.ext.coroutines}"
+
+
+    //Retrofit
+    implementation "com.squareup.retrofit2:retrofit:${rootProject.ext.retrofit}"
+    implementation "com.google.code.gson:gson:${rootProject.ext.gson}"
+    implementation "com.squareup.retrofit2:converter-gson:${rootProject.ext.retrofit}"
+    implementation "com.squareup.okhttp3:logging-interceptor:${rootProject.ext.retrofit_login}"
+
+
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.7.2'
+    implementation 'androidx.annotation:annotation:1.1.0'
+    implementation 'androidx.paging:paging-runtime-ktx:2.1.2'
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    /*test-case*/
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    //loading
+    implementation 'com.wang.avi:library:2.1.3'
+
+    // paging library
+    implementation "android.arch.paging:runtime:1.0.1"
+    implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
+    implementation 'com.google.android.material:material:1.1.0'
+
+ /*   // room
+    implementation "androidx.room:room-runtime:$version_room"
+    implementation "androidx.room:room-coroutines:$version_room_coroutine"
+    implementation "androidx.room:room-rxjava2:$version_room"
+    kapt   "androidx.room:room-compiler:$version_room"*/
+    //Room
+    implementation "androidx.room:room-runtime:$version_room"
+    kapt "androidx.room:room-compiler:$version_room"
+    implementation "androidx.room:room-ktx:$version_room"
+    kapt "android.arch.persistence.room:compiler:1.1.1"
+    // Koin
+    implementation "org.koin:koin-android:2.0.1"
+    implementation 'org.koin:koin-androidx-viewmodel:2.0.1'
+    implementation 'org.koin:koin-androidx-scope:2.0.1'
+
+    implementation 'androidx.core:core-ktx:1.3.2'
+}
