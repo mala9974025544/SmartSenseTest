@@ -20,19 +20,21 @@ import kotlinx.android.synthetic.main.content_default.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private val userViewModel by viewModel<MainViewModelWithPaging>()
     var userist = ArrayList<User>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+setupUi()
 
-
-        toolbarTitle.text = "Dash"
 
     }
-
+fun setupUi(){
+    toolbarTitle.text = getString(R.string.app_name)
+    icBack.setOnClickListener(this)
+}
     override fun onBackPressed() {
         finish()
     }
@@ -67,6 +69,12 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+    }
+
+    override fun onClick(v: View?) {
+      when(v?.id){
+        R.id.icBack->finish()
+      }
     }
 
 }
