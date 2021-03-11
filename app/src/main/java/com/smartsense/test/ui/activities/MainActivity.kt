@@ -27,14 +27,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-setupUi()
+        setupUi()
 
 
     }
-fun setupUi(){
-    toolbarTitle.text = getString(R.string.app_name)
-    icBack.setOnClickListener(this)
-}
+
+    fun setupUi() {
+        toolbarTitle.text = getString(R.string.app_name)
+        icBack.setOnClickListener(this)
+    }
+
     override fun onBackPressed() {
         finish()
     }
@@ -72,9 +74,9 @@ fun setupUi(){
     }
 
     override fun onClick(v: View?) {
-      when(v?.id){
-        R.id.icBack->finish()
-      }
+        when (v?.id) {
+            R.id.icBack -> finish()
+        }
     }
 
 }

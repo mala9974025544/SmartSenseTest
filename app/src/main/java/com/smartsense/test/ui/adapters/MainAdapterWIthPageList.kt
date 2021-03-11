@@ -1,6 +1,7 @@
 package com.smartsense.test.ui.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,7 @@ import com.bumptech.glide.Glide
 import com.smartsense.test.R
 import com.smartsense.test.database.entity.User
 import com.smartsense.test.database.entity.UserDB
+import com.smartsense.test.ui.activities.UserDetailActivity
 import kotlinx.android.synthetic.main.item_layout.view.*
 
 class MainAdapterWIthPageList(
@@ -28,11 +30,17 @@ class MainAdapterWIthPageList(
         val user = getItem(position)
         holder.bind(user!!)
     }
-    inner  class UserViewHolder(view: View) : RecyclerView.ViewHolder(view){
+    inner  class UserViewHolder(view: View) : RecyclerView.ViewHolder(view), View.OnClickListener{
 
         private val imageView = view.imageViewAvatar
         private val userName = view.textViewUserName
         private val userEmail = view.textViewUserEmail
+        init {
+            view.setOnClickListener(this)
+        }
+        override fun onClick(v: View?) {
+            rediretMainActivity()
+        }
         fun bind(user: UserDB) {
             userName.text = user.first_name
             userEmail.text = user.email
@@ -44,6 +52,13 @@ class MainAdapterWIthPageList(
 
 
 
+    }
+
+    private fun rediretMainActivity(user:User) {
+        val intent = Intent(context, UserDetailActivity::class.java)
+        intent.putExtra("user", user)
+        context.startActivity(intent)
+        Bungee.slideLeft(context)
     }
 
 
