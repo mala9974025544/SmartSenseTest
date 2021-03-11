@@ -1,11 +1,8 @@
-package com.diegaspar.recipesbook.datasource
+package com.smartsense.test.repositary
 
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.DataSource
-import com.smartsense.test.database.entity.User
 import com.smartsense.test.database.entity.UserDB
-import com.smartsense.test.utils.UserDataSource
-import com.smartsense.test.utils.UserRepo
 import kotlinx.coroutines.CoroutineScope
 
 class RecipeDataSourceFactory(

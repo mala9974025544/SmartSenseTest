@@ -1,7 +1,7 @@
 package com.diegaspar.recipesbook.utils
 
 import androidx.paging.PagedList
-import com.smartsense.test.utils.UserDataSource
+import com.smartsense.test.repositary.UserDataSource
 
 fun pagedListConfig() = PagedList.Config.Builder()
       .setEnablePlaceholders(true)

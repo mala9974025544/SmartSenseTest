@@ -1,4 +1,4 @@
-package com.smartsense.test.utils
+package com.smartsense.test.repositary
 
 import com.smartsense.test.database.dao.UserDao
 import com.smartsense.test.database.entity.User

@@ -1,18 +1,15 @@
-package org.pbreakers.mobile.androidtest.udacity.app.di
+package com.smartsense.test.di
 
 import android.app.Application
 import androidx.room.Room
-import com.smartsense.test.utils.BaseViewModel
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.smartsense.test.database.AppDatabase
 import com.smartsense.test.database.dao.UserDao
 import com.smartsense.test.services.NetworkApiWithPaging
-import com.smartsense.test.utils.UserDataSource
-import com.smartsense.test.utils.UserRepo
+import com.smartsense.test.repositary.UserRepo
 import com.smartsense.test.viewModels.MainViewModelWithPaging
-import kotlinx.coroutines.CoroutineScope
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import org.koin.android.ext.koin.androidApplication

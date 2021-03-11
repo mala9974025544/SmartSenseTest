@@ -3,10 +3,10 @@ package com.smartsense.test.viewModels
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.LivePagedListBuilder
 import com.smartsense.test.utils.BaseViewModel
-import com.diegaspar.recipesbook.datasource.RecipeDataSourceFactory
+import com.smartsense.test.repositary.RecipeDataSourceFactory
 import com.diegaspar.recipesbook.utils.pagedListConfig
 import com.smartsense.test.database.entity.UserDB
-import com.smartsense.test.utils.UserRepo
+import com.smartsense.test.repositary.UserRepo
 import kotlinx.coroutines.launch
 
 class MainViewModelWithPaging(var repo: UserRepo) : BaseViewModel() {
@@ -30,19 +30,5 @@ init {
     }
 
 
-  /*  var userPagedList: LiveData<PagedList<User>>
-    private var liveDataSource: LiveData<UserDataSource>
-    init {
-        val itemDataSourceFactory = UserDataSource.UserDataSourceFactory()
-        liveDataSource = itemDataSourceFactory.userLiveDataSource
-        val config = PagedList.Config.Builder()
-            .setEnablePlaceholders(true)
-            .setPageSize(UserDataSource.PAGE_SIZE)
-            .build()
-        userPagedList = LivePagedListBuilder(itemDataSourceFactory, config)
-            .build()
-
-
-    }*/
 
 }
