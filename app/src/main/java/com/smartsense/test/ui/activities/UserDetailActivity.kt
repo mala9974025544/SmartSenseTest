@@ -1,6 +1,7 @@
 package com.smartsense.test.ui.activities
 
 import android.os.Bundle
+import android.os.Parcelable
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.smartsense.test.R
@@ -14,10 +15,11 @@ class UserDetailActivity  : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activityuser_detai)
         if (intent.extras != null) {
-            val user = intent.getParcelableExtra<>("user") as User?
+            val user = intent.getParcelableExtra<Parcelable>("user") as User?
+            if(user!=null)
+                setupUi(user)
         }
-        if(user!=null)
-        setupUi(user)
+
 
 
     }
